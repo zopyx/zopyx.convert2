@@ -29,15 +29,6 @@ __ http://xmlgraphics.apache.org/fop/download.html#dist-type
 
 - or `PrinceXML`__ (commercial) for PDF support 
 
-__ http://www.princexml.com/
-
-- `BeautifulSoup`__  (will be installed automatically through easy_install. See Installation.)
-
-__ http://www.crummy.com/software/BeautifulSoup/
-   
-- `ElementTree`__ (will be installed automatically through easy_install. See Installation.)
-
-__ http://effbot.org/zone/element-index.html
 
 Installation
 ============
@@ -68,10 +59,11 @@ Some examples from the Python command-line::
 
   from zopyx.convert2 import Converter
   C = Converter('/path/to/some/file.html')
-  pdf_filename = C('pdf-xinc')         # using XINC
-  pdf2_filename = C('pdf-fop')       # using FOP
-  pdf3_filename = C('pdf-printce')       # using FOP
-  rtf_filename = C('rtf-xfc')
+  pdf_filename = C('pdf-xinc')       # using XINC
+  pdf2_filename = C('pdf-pisa')      # using PISA
+  pdf3_filename = C('pdf-fop')       # using FOP
+  pdf4_filename = C('pdf-prince')    # using FOP
+  rtf_filename = C('rtf-xfc')        
   pdt_filename = C('odt-xfc')
   wml_filename = C('wml-xfc')
   docx_filename = C('docx-xfc')
@@ -151,8 +143,7 @@ See LICENSE.txt.
 Contact
 =======
 
-| ZOPYX Ltd. & Co. KG
-| c/o Andreas Jung, 
+| ZOPYX Ltd.
 | Charlottenstr. 37/1
 | D-72070 Tuebingen, Germany
 | E-mail: info at zopyx dot com
