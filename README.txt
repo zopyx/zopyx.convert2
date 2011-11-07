@@ -29,6 +29,7 @@ __ http://xmlgraphics.apache.org/fop/download.html#dist-type
 
 - or `PrinceXML`__ (commercial) for PDF support 
 
+__ http://www.princexml.com
 
 Installation
 ============
