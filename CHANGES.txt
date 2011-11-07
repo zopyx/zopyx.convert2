@@ -1,3 +1,8 @@
+2.4 (2011-11-07)
+==================
+- documentation updated in order to reflect changes
+  to the first public release of the Plone Client Connector
+
 2.3.2 (2011-08-23)
 ==================
 - added support for %(WORKDIR)s substitution in Calibre converter
