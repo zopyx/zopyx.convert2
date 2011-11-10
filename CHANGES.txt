@@ -1,3 +1,7 @@
+2.4.1 (2011-11-11)
+==================
+- fixed BeautifulSoup dependency
+
 2.4 (2011-11-07)
 ==================
 - documentation updated in order to reflect changes

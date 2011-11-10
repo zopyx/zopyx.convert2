@@ -12,7 +12,7 @@ CLASSIFIERS = [
     'Programming Language :: Python',
 ]
 
-version = '2.4'
+version = '2.4.1'
 
 desc = unicode(file('README.txt').read().strip(), 'utf-8')
 changes = file('CHANGES.txt').read().strip()
@@ -38,7 +38,7 @@ setup(name='zopyx.convert2',
       install_requires=[
           'setuptools', 
           'elementtree', 
-          'BeautifulSoup<=3.0.9999', 
+          'BeautifulSoup', 
           'pisa', 
           'reportlab', 
           'pypdf', 
