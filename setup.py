@@ -12,10 +12,10 @@ CLASSIFIERS = [
     'Programming Language :: Python',
 ]
 
-version = '2.4.1'
+version = '2.4.2'
 
-desc = unicode(file('README.txt').read().strip(), 'utf-8')
-changes = file('CHANGES.txt').read().strip()
+desc = unicode(file(os.path.join('docs', 'source', 'readme.rst')).read().strip(), 'utf-8')
+changes = file(os.path.join('docs', 'source', 'HISTORY.rst')).read().strip()
 long_description = desc + '\n\nChanges:\n========\n\n' + changes
 
 
