@@ -14,7 +14,7 @@ CLASSIFIERS = [
 
 version = '2.4.2'
 
-desc = unicode(file(os.path.join('docs', 'source', 'readme.rst')).read().strip(), 'utf-8')
+desc = unicode(file(os.path.join('docs', 'source', 'README.rst')).read().strip(), 'utf-8')
 changes = file(os.path.join('docs', 'source', 'HISTORY.rst')).read().strip()
 long_description = desc + '\n\nChanges:\n========\n\n' + changes
 
