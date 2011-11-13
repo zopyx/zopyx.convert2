@@ -47,11 +47,15 @@ Supported platforms
 Windows, Unix
 
 
-Subversion repository
-=====================
+Source code
+===========
 
-- https://zope/zopyx.convert2/trunk (for read-only checkouts)/python-projects/zopyx.convert2/trunk/
+- https://github.com/zopyx/zopyx.convert2
 
+Bug tracker
+===========
+
+- https://github.com/zopyx/zopyx.convert2/issues
 
 Usage
 =====
@@ -147,5 +151,5 @@ Contact
 | ZOPYX Ltd.
 | Charlottenstr. 37/1
 | D-72070 Tuebingen, Germany
-| E-mail: info at zopyx dot com
-| Web: http://www.zopyx.com
+| info@zopyx.com
+| www.zopyx.com
