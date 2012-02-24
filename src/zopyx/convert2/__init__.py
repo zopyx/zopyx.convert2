@@ -11,6 +11,7 @@ import fop
 import prince
 import xfc
 import calibre
+import pdfreactor
 import pisa
 import pisa_bin
 from convert import Converter

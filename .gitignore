@@ -4,7 +4,6 @@
 .installed.cfg
 .mr.developer.cfg
 var
-src
 parts
 bin
 develop-eggs

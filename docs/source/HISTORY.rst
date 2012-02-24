@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.4.2 (unreleased)
+------------------
+- experimental support for PDFreactor
+
 2.4.1 (2011-11-11)
 ------------------
 - fixed BeautifulSoup dependency
