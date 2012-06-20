@@ -64,14 +64,14 @@ Some examples from the Python command-line::
 
   from zopyx.convert2 import Converter
   C = Converter('/path/to/some/file.html')
-  pdf_filename = C('pdf-xinc')       # using XINC
-  pdf2_filename = C('pdf-pisa')      # using PISA
-  pdf3_filename = C('pdf-fop')       # using FOP
-  pdf4_filename = C('pdf-prince')    # using FOP
-  rtf_filename = C('rtf-xfc')        
-  pdt_filename = C('odt-xfc')
-  wml_filename = C('wml-xfc')
-  docx_filename = C('docx-xfc')
+  pdf_filename = C('pdf-xinc')['output_filename']       # using XINC
+  pdf2_filename = C('pdf-pisa')['output_filename']      # using PISA
+  pdf3_filename = C('pdf-fop')['output_filename']       # using FOP
+  pdf4_filename = C('pdf-prince')['output_filename']    # using FOP
+  rtf_filename = C('rtf-xfc')['output_filename']        
+  pdt_filename = C('odt-xfc')['output_filename']
+  wml_filename = C('wml-xfc')['output_filename']
+  docx_filename = C('docx-xfc')['output_filename']
 
 A very simple command-line converter is also available::
 
