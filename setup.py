@@ -12,7 +12,7 @@ CLASSIFIERS = [
     'Programming Language :: Python',
 ]
 
-version = '2.4.2.1'
+version = '2.4.3'
 
 desc = unicode(file(os.path.join('docs', 'source', 'README.rst')).read().strip(), 'utf-8')
 changes = file(os.path.join('docs', 'source', 'HISTORY.rst')).read().strip()
