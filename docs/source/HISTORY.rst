@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.4.4 (2012-11-05)
+------------------
+- creating tidyed file inside the existing folder instead
+  of in $TMPDIR. This error caused that some style files 
+  could not we loaded with PDFreactor
 
 2.4.3 (2012-06-20)
 ------------------
