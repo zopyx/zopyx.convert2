@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.4.5 (2012-11-05)
+------------------
+- fixed typo
+
 2.4.4 (2012-11-05)
 ------------------
 - creating tidyed file inside the existing folder instead

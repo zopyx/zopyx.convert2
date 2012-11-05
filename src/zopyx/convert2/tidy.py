@@ -64,7 +64,6 @@ def tidyhtml(filename, encoding='utf-8', strip_base=False):
 
     base, ext = os.path.splitext(filename)
     tidy_filename = '%s-tidy%s' % (base, ext)
-    import pdb; pdb.set_trace() 
     file(tidy_filename, 'wb').write(str(html))
     return tidy_filename
 
