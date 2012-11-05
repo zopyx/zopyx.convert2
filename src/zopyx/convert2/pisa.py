@@ -23,10 +23,10 @@ def html2pdf(html_filename, output_filename=None, **options):
 
     fin = file(html_filename)
     fout = file(output_filename, 'wb')
-    pdf = pisaDocument(fin, 
-                       fout,
-                       encoding='utf-8',
-                       debug=True)
+    pisaDocument(fin, 
+                 fout,
+                 encoding='utf-8',
+                 debug=True)
 
     fin.close()
     fout.close()

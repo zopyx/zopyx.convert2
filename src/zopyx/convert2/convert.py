@@ -46,12 +46,6 @@ class BaseConverter(object):
         self.fo_filename = None        
         self.cleanup = cleanup
         self.verbose = verbose
-        self.tempfiles = list()
-
-    def newTempfile(self, suffix=''):
-        filename = newTempfile(suffix=suffix)
-        self.tempfiles.append(filename)
-        return filename
 
     def convert2FO(self, **options):
         """ Conversion phase 1: HTML -> FO """
@@ -70,7 +64,4 @@ class BaseConverter(object):
         if self.cleanup:
             if self.fo_filename:
                 os.unlink(self.fo_filename)
-
-            for name in self.tempfiles:
-                os.unlink(name)
 
