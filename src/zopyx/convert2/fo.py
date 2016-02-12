@@ -6,7 +6,11 @@
 
 import os
 import sys
-from elementtree.ElementTree import parse, tostring, SubElement
+
+if sys.version_info >= (2,5):
+    from xml.etree.ElementTree import ElementTree,parse, tostring
+else:
+    from elementtree.ElementTree import parse, tostring, SubElement
 
 from config import java
 from tidy import tidyhtml
