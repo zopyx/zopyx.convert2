@@ -71,7 +71,7 @@ def checkEnvironment(envname):
 
     dirname = os.environ.get(envname, None)
     if dirname is None:
-        LOG.debug('Environment variable $%s is unset' % envname)
+        LOG.debug(f'Environment variable ${envname} is unset')
         return False
 
     if not os.path.exists(dirname):

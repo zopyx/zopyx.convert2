@@ -18,10 +18,10 @@ def _check_fop():
     if not checkEnvironment('FOP_HOME'):
         return False
 
-    exe_name = win32 and 'fop.bat' or 'fop'
+    exe_name = 'fop.bat' if win32 else 'fop'
     full_exe_name = os.path.join(fop_home, exe_name)
     if not os.path.exists(full_exe_name):
-        LOG.debug('%s does not exist' % full_exe_name)
+        LOG.debug(f'{full_exe_name} does not exist')
         return False
 
     return True
@@ -43,7 +43,7 @@ def fo2pdf(fo_filename, output_filename=None):
 
     status, output = runcmd(cmd)
     if status != 0:
-        raise ConversionError('Error executing: %s' % cmd, output)
+        raise ConversionError(f'Error executing: {cmd}', output)
 
     return dict(output_filename=output_filename,
                 status=status,
@@ -64,8 +64,7 @@ class HTML2PDF(BaseConverter):
     def convert(self, output_filename=None, **options):
         options['strip_base'] = True
         self.convert2FO(**options)
-        result = fo2pdf(self.fo_filename, output_filename)
-        return result
+        return fo2pdf(self.fo_filename, output_filename)
 
 fop_available = _check_fop()
 

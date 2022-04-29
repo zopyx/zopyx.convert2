@@ -40,15 +40,11 @@ class HTML2FO(object):
         if tidy:
             filename = tidyhtml(filename, encoding, strip_base=kw.get('strip_base', False))
 
-        if output_filename:
-            fo_filename = output_filename
-        else:
-            fo_filename = newTempfile(suffix='.fo')
-
+        fo_filename = output_filename or newTempfile(suffix='.fo')
         csstoxslfo = os.path.abspath(os.path.join(dirname, 'lib', 'csstoxslfo', 'css2xslfo.jar'))
         if not os.path.exists(csstoxslfo):
-            raise IOError('%s does not exist' % csstoxslfo)
-        
+            raise IOError(f'{csstoxslfo} does not exist')
+
         cmd = '"%s"' % java + \
               ' -Duser.language=en -Xms256m -Xmx256m -jar "%(csstoxslfo)s" "%(filename)s" -fo "%(fo_filename)s"' % vars()
         for k in kw:
@@ -56,7 +52,7 @@ class HTML2FO(object):
 
         status, output = runcmd(cmd)
         if status != 0:
-            raise ConversionError('Error executing: %s' % cmd, output)
+            raise ConversionError(f'Error executing: {cmd}', output)
 
         # remove tidy-ed file
         if tidy:
@@ -67,7 +63,7 @@ class HTML2FO(object):
 
         E = parse(fo_filename)
 
-        ids_seen = list()
+        ids_seen = []
         for node in E.getiterator():
             get = node.attrib.get
 
@@ -114,7 +110,7 @@ class HTML2FO(object):
                              'wrap-option' : 'no-wrap',
                              'linefeed-treatment' : 'preserve' }.items():
                     node.attrib[k] = v
-                
+
         fo_text = tostring(E.getroot())
         fo_text = fo_text.replace('<ns0:block ' , '<ns0:block margin-top="0" margin-bottom="0" ')  # avoid a linebreak through <li><p> (XFC)
 #        fo_text = fo_text.replace('<ns0:block/>', '') # causes a crash with XINC    

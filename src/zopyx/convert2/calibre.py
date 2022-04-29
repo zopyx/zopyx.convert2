@@ -16,9 +16,7 @@ from exceptions import ConversionError
 from tidy import tidyhtml
 
 def _check_calibre():
-    if not which('ebook-convert'):
-        return False
-    return True
+    return bool(which('ebook-convert'))
 
 calibre_available = _check_calibre()
 
@@ -26,7 +24,7 @@ def html2calibre(html_filename, output_filename=None, cmdopts='', **calibre_opti
     """ Convert a HTML file using calibre """
     
     if not html_filename.endswith('.html'):
-        shutil.copy(html_filename, html_filename + '.html')
+        shutil.copy(html_filename, f'{html_filename}.html')
         html_filename += '.html'
 
     if not output_filename:
@@ -35,23 +33,22 @@ def html2calibre(html_filename, output_filename=None, cmdopts='', **calibre_opti
     if not calibre_available:
         raise RuntimeError("The external calibre converter isn't available")
 
-    options = list()
+    options = []
     for k,v in calibre_options.items():
         if v is None:
-            options.append('--%s ' % k)
+            options.append(f'--{k} ')
         else:
             options.append('--%s="%s" ' % (k, v)) 
 
     if sys.platform == 'win32':
         raise NotImplementedError('No support for using Calibre on Windows available')
-    else:
-        options = ' '.join(options)
-        options = options + ' ' + cmdopts
-        cmd = '"ebook-convert" "%s" "%s" %s' % (html_filename, output_filename, options)
-    
+    options = ' '.join(options)
+    options = f'{options} {cmdopts}'
+    cmd = '"ebook-convert" "%s" "%s" %s' % (html_filename, output_filename, options)
+
     status, output = runcmd(cmd)
     if status != 0:
-        raise ConversionError('Error executing: %s' % cmd, output)
+        raise ConversionError(f'Error executing: {cmd}', output)
 
     return dict(output_filename=output_filename,
                 status=status,

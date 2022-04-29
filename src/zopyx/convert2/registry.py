@@ -8,8 +8,9 @@
 A simple converter registry
 """
 
+
 # map converter name to converter class
-converter_registry = dict()
+converter_registry = {}
 
 def registerConverter(converter_cls):
     converter_registry[converter_cls.name] = converter_cls

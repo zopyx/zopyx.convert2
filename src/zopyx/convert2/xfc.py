@@ -22,7 +22,7 @@ def _check_xfc():
     # converters are also installed properly)
     full_exe_name = os.path.join(xfc_dir, 'fo2rtf')
     if not os.path.exists(full_exe_name):
-        LOG.debug('%s does not exist' % full_exe_name)
+        LOG.debug(f'{full_exe_name} does not exist')
         return False
 
     return True
@@ -33,11 +33,11 @@ def fo2xfc(fo_filename, format='rtf', output_filename=None):
         through XFC-4.0.
     """
 
-    if not format in ('rtf', 'docx', 'wml', 'odt'):
-        raise ValueError('Unsupported format: %s' % format)
+    if format not in ('rtf', 'docx', 'wml', 'odt'):
+        raise ValueError(f'Unsupported format: {format}')
 
     if not output_filename:
-        output_filename = newTempfile(suffix='.%s' % format)
+        output_filename = newTempfile(suffix=f'.{format}')
 
     if sys.platform == 'win32':
         cmd = '"%s\\fo2%s.bat"  "%s" "%s"' % (xfc_dir, format, fo_filename, output_filename) 
@@ -47,7 +47,7 @@ def fo2xfc(fo_filename, format='rtf', output_filename=None):
 
     status, output = runcmd(cmd)
     if status != 0:
-        raise ConversionError('Error executing: %s' % cmd, output)
+        raise ConversionError(f'Error executing: {cmd}', output)
 
     return dict(output_filename=output_filename,
                 status=status,

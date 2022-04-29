@@ -15,9 +15,7 @@ from tidy import tidyhtml
 from exceptions import ConversionError
 
 def _check_pdfreactor():
-    if not which('pdfreactor'):
-        return False
-    return True
+    return bool(which('pdfreactor'))
 
 pdfreactor_available = _check_pdfreactor()
 
@@ -32,10 +30,10 @@ def html2pdf(html_filename, output_filename=None, **options):
 
     cmd = '%s "pdfreactor" "%s" "%s"' % \
           (execution_shell, html_filename, output_filename)
-    
+
     status, output = runcmd(cmd)
     if status != 0:
-        raise ConversionError('Error executing: %s' % cmd, output)
+        raise ConversionError(f'Error executing: {cmd}', output)
     return dict(output_filename=output_filename,
                 status=status,
                 output=output)
