@@ -48,11 +48,10 @@ def tidyhtml(filename, encoding='utf-8', strip_base=False):
         """ Callback to convert entities """
         e = mo.group(1)
         v = e[1:-1]
-        if not v.startswith('#'):
-            codepoint =  name2codepoint.get(v)
-            return codepoint and '&#%d;' % codepoint or ''
-        else:
+        if v.startswith('#'):
             return e
+        codepoint =  name2codepoint.get(v)
+        return codepoint and '&#%d;' % codepoint or ''
     
     entity_reg = re.compile('(&.*?;)')
     html = entity_reg.sub(handler, html)

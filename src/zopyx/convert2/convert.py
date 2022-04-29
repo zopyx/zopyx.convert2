@@ -21,7 +21,7 @@ class Converter(object):
 
         converter = registry.converter_registry.get(format)
         if converter is None:
-            raise ValueError('Unsupported format: %s' % format)
+            raise ValueError(f'Unsupported format: {format}')
 
         if format == 'fo':
             c = converter()
@@ -61,7 +61,6 @@ class BaseConverter(object):
     def __del__(self):
         """ House-keeping """
 
-        if self.cleanup:
-            if self.fo_filename:
-                os.unlink(self.fo_filename)
+        if self.cleanup and self.fo_filename:
+            os.unlink(self.fo_filename)
 

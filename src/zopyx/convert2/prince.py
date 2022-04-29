@@ -15,9 +15,7 @@ from tidy import tidyhtml
 from exceptions import ConversionError
 
 def _check_prince():
-    if not which('prince'):
-        return False
-    return True
+    return bool(which('prince'))
 
 prince_available = _check_prince()
 
@@ -30,10 +28,10 @@ def html2pdf(html_filename, output_filename=None, **options):
     if not prince_available:
         raise RuntimeError("The external PrinceXML converter isn't available")
 
-    cmd_options = list()
+    cmd_options = []
     for k,v in options.items():
         if v is None:
-            cmd_options.append('--%s ' % k)
+            cmd_options.append(f'--{k} ')
         else:
             cmd_options.append('--%s="%s" ' % (k, v)) 
 
@@ -42,10 +40,10 @@ def html2pdf(html_filename, output_filename=None, **options):
     else:
         cmd = '%s "prince" "%s" %s -o "%s"' % \
               (execution_shell, html_filename, ' '.join(cmd_options), output_filename)
-    
+
     status, output = runcmd(cmd)
     if status != 0:
-        raise ConversionError('Error executing: %s' % cmd, output)
+        raise ConversionError(f'Error executing: {cmd}', output)
     return dict(output_filename=output_filename,
                 status=status,
                 output=output)

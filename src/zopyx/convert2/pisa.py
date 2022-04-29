@@ -47,8 +47,7 @@ class HTML2PDF(BaseConverter):
         return True
 
     def convert(self, output_filename=None, **options):
-        result = html2pdf(self.filename, output_filename, **options)
-        return result
+        return html2pdf(self.filename, output_filename, **options)
 
 from registry import registerConverter
 registerConverter(HTML2PDF)
